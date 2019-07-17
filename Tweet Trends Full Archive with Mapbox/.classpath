@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Twitter Data Mining Trial/twitter4j-core-4.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Twitter Data Mining Trial/kotlin-runtime-1.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Twitter Data Mining Trial/okhttp-3.12.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Twitter Data Mining Trial/okio-2.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Twitter Data Mining Trial/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Twitter Data Mining Trial/slf4j-simple-1.7.25.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Connector Without Library/Http request jars/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Connector Without Library/Http request jars/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Connector Without Library/Http request jars/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Connector Without Library/Http request jars/httpclient-4.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Connector Without Library/Http request jars/httpclient-4.5.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Connector Without Library/Http request jars/httpcore-4.4.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Connector Without Library/Http request jars/signpost-commonshttp4-1.2.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Connector Without Library/Http request jars/signpost-core-1.2.1.2 (1).jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends 10 Day with Mapbox/emoji-java-4.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends 10 Day with Mapbox/json-20180813.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/API Connection"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Connector Without Library/google-maps-services-0.9.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/MapboxRequiredJARS/converter-gson-2.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/MapboxRequiredJARS/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/MapboxRequiredJARS/kotlin-stdlib-1.2.60.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/MapboxRequiredJARS/okhttp-3.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/MapboxRequiredJARS/okio-2.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/MapboxRequiredJARS/retrofit-2.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/MapboxRequiredJARS/twitter4j-core-4.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends 10 Day with Mapbox/mysql-connector-java-8.0.16.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

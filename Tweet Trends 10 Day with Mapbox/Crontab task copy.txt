@@ -1,0 +1,2 @@
+0 */6 * * * cd /home/ec2-user/ProgramFiles && java -jar MeTooUpdater.jar
+

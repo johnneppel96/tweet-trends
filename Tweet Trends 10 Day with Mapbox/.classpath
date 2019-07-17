@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Twitter Data Mining Trial/google-maps-services-0.9.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends 10 Day with Mapbox/MapboxRequiredJARS/converter-gson-2.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends 10 Day with Mapbox/MapboxRequiredJARS/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends 10 Day with Mapbox/MapboxRequiredJARS/twitter4j-core-4.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends 10 Day with Mapbox/emoji-java-4.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/Http request jars/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/Http request jars/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/Http request jars/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/Http request jars/httpclient-4.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/Http request jars/httpclient-4.5.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/Http request jars/httpcore-4.4.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/Http request jars/signpost-commonshttp4-1.2.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends Full Archive with Mapbox/Http request jars/signpost-core-1.2.1.2 (1).jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends 10 Day with Mapbox/mysql-connector-java-8.0.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/John/Documents/Eclipse Programs/Tweet Trends 10 Day with Mapbox/json-20180813.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
