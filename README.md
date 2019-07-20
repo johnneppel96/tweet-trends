@@ -1,5 +1,5 @@
 # tweet-trends
-Tweet Trends is a web application that my partner, Thomas McHugh, and I implemented for our unversity's senior software practicum class. It is currently deployed on an Amazon EC2 server and the source code is executed via a Linux Crontab task every 2 hours to archive newly shared Tweets.
+Tweet Trends is a web application that my partner, Thomas McHugh, and I implemented for our unversity's senior software practicum class. It is currently deployed on an Amazon EC2 server and the source code is executed via a Linux cron job every 2 hours to archive newly shared Tweets.
 
 Background of the project:
 We were tasked with developing an application that can be used to study the #MeToo movement on Twitter by correlating Tweets
