@@ -5,5 +5,5 @@ $username = '';
 $password = '';
 $db_name = 'tweet_trends_data';         //URL below
 global $db_connection;
-$db_connection = new mysqli('localhost',$username, $password, $db_name) or die('something broke');
+$db_connection = new mysqli('localhost',$username, $password, $db_name) or die('Connection failed');
 ?>
