@@ -473,7 +473,7 @@ function displayPastWeeksData() {
         //Adds marker to the marker map's data list
       	markerData.push(marker);
       <?php } //end of while ?>
-	<?php } //end of if ?>
+	<?php mysqli_close($db_connection); } //end of if ?>
     
     heatmapLayer.setData(newDataSet);
 } //end displayPastWeeksData
@@ -567,7 +567,7 @@ function displayInputData() {
       <?php } //end of while ?>
 	
     heatmapLayer.setData(newDataSet);
-	<?php } //end if ?>
+	<?php mysqli_close($db_connection); } //end if ?>
 } //end getInput()
 
     
