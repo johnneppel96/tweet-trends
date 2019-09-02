@@ -1,4 +1,6 @@
 # tweet-trends
+https://tweettrends.csse-projects.monmouth.edu/
+
 Tweet Trends is a web application that my partner, Thomas McHugh, and I implemented for our unversity's senior software practicum class. It is currently deployed on an Amazon EC2 server and the source code is executed via a Linux Cron job every 2 hours to archive newly shared Tweets. The fields of Tweet metadata are archived into MySQL which is installed on that EC2 server as well.
 
 Background of the project:
