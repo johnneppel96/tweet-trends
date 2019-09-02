@@ -56,7 +56,7 @@ public class TweetDataObject extends DataObject {
 	 * This constructor is for archiving Tweet/Status objects that DO NOT CONTAIN
 	 * geo-location metadata. Take note of the 'coords' parameter passsed into this
 	 * constructor. The latitude/longitude encapsulated within this parameter have
-	 * been generated outside of this class via the Google Geocoding API.
+	 * been generated outside of this class via the Mapbox Forward Geocoding API.
 	 * 
 	 */
 	public TweetDataObject(QueryObject q, JSONObject TweetAsJSON, Coordinates coords) {
