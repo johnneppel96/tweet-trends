@@ -1,11 +1,12 @@
 
-
+/* This class serves to encapsulate data fields associated with the queries executed to
+   the Twitter Premium Search Tweets API. */
 public class QueryObject {
 
 	private String queryStatement;
 	private String fromDate;
 	private String toDate;
-	private String nextToken=null;
+	private String nextToken;
 	
 	public QueryObject(String queryStatement, String fromDate, String toDate) {
 		this.queryStatement=queryStatement;
