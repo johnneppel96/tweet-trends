@@ -53,46 +53,6 @@ public class TweetTrendsCore {
 	}
 	
 	
-	/*Method will archive Tweets pertaining to the query, starting with the most recently shared ones on Twitter,
-	  up UNTIL it reaches a Tweet that has an ID less than a previously archived Tweet. As a reminder, Tweet ID's are sequential.
-	  The newest Tweets have an ID that is greater than the older ones. By doing this, the newly shared 
-	  Tweets on Twitter are archived and ones that have already been previously parsed/archived are not stored once again.
-	  This prevents storing redundant data.
-	 */
-	public void archiveMostRecentTweets(String queryStatement)  {
-		if(DataArchival.getInstance().isDatabaseConnectionActive()==false) {
-			this.printDatabaseConnectionError();
-			return;
-		}
-		
-		long minimumID=0; //the ID of the most recently archived Tweet pertaining to the query
-		
-		//The "until" date, as part of the Twitter Query Object, is non-inclusive.
-		//Therefore, setting the "until" date for tomorrow returns the most recent results from today's date.
-		Calendar tomorrowsDate= this.getTomorrowsDate(); 
-		Calendar aMonthsAgoDate= this.getDateFromMonthAgo();//This will be used as an arbitrary "since" date.
-		String sinceDate = this.convertDateToFormattedString(aMonthsAgoDate);
-		String untilDate = this.convertDateToFormattedString(tomorrowsDate);
-		
-		if(DataArchival.getInstance().getLargestAssocTweetID(queryStatement)==null) { //if no Tweets have already been archive pertaining to the query
-			System.out.println("There are currently no Tweets archived within the database "
-					+ "pertaining to the query: "+ queryStatement);
-			System.out.println("Therefore the most recently shared Tweets will NOT be archived"+ "\n");
-			return;
-		}
-		else {
-			minimumID= (long) DataArchival.getInstance().getLargestAssocTweetID(queryStatement);//gets the ID of the most recent Tweet that has been previously archived
-		}
-	
-		QueryObject query= new QueryObject(queryStatement, sinceDate, untilDate); //this query will cover the most recently shared Tweets, up until the most recently archived one.
-		try {
-			retriever.parseTweetData(query);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
 	
 	/*Ensures that the date is in yyyymmddhhmm format. Returns true if parameter passed in is in that format
 	 *and false otherwise.
