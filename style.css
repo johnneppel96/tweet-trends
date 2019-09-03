@@ -1,0 +1,56 @@
+ /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 50%;
+
+      }
+      #markerMap{
+      	height: 50%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+
+      }
+      h1{
+              text-shadow: 2px 2px 2px #FFFFFF;
+      }
+
+      form {
+      	  color: white;
+      	  padding: 10px;
+
+  	  }	
+  	  button{
+  	  	padding: 10px;
+  	  }
+
+
+      #floating-panel {
+        position: relative;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      
+      #floating-panel {
+        background-color: #fff;
+        border: 1px solid #999;
+        left: 0%;
+        padding: 5px;
+        position: bottom;
+        z-index: 5;
+
+
+      }
+
+	  .show {display: block;}
