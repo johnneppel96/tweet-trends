@@ -155,8 +155,8 @@ public class Geocoder {
 	 * that isn't null. This method is necessary because Twitter users, for example,
 	 * are able to put whatever text they desire in their bio-locations. From what
 	 * I've seen, *most* users will put legitimate information in their relating to
-	 * their primary location. Others, however, will put bullshit text such as
-	 * "Hentai Heaven" (I've actually seen that) as their bio-location.
+	 * their primary location. Others, however, will put text such as
+	 * "Hentai Heaven" (I've actually seen that once) as their bio-location.
 	 */
 	public boolean didAPIgenerateValidResponse(String location) {
 		// null responses from API means that it could not find data about the location
