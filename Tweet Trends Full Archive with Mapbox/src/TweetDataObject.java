@@ -234,8 +234,7 @@ public class TweetDataObject extends DataObject {
 		JSONObject boundingBoxCoord = placeData.getJSONObject("bounding_box"); // extracts the boundingBox which
 																				// contains sets of coordinates
 
-		// The coordinates are an "Array of Array of Array of Float" Fuck the Twitter
-		// peeps for making it so complicated honestly
+		// The coordinates are an "Array of Array of Array of Float". The following extracts it.
 		JSONArray coordinatesArray = boundingBoxCoord.getJSONArray("coordinates");
 
 		JSONArray coordArrayElement = coordinatesArray.getJSONArray(0); // gets the embedded array object, will always
