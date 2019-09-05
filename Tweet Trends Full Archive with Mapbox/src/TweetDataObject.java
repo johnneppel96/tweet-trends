@@ -19,6 +19,9 @@ import geocodingGoogleAPI.Coordinates;
 
 //@author John Neppel
 //SE Practicum 2018-2019
+
+/* This class is used to extract desired fields of data accordingly from Tweet metadata and encapsulate it
+ * so it can be later be pulled and archived into MySQL. */
 public class TweetDataObject {
 	private long TweetID; // the unique ID number associated with each Tweet
 	private String TweetText = ""; // the text of the Tweet itself
