@@ -19,7 +19,7 @@ import geocodingGoogleAPI.Coordinates;
 
 //@author John Neppel
 //SE Practicum 2018-2019
-public class TweetDataObject extends DataObject {
+public class TweetDataObject {
 	private long TweetID; // the unique ID number associated with each Tweet
 	private String TweetText = ""; // the text of the Tweet itself
 	private Coordinates coordinates;
