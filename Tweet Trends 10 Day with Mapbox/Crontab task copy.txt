@@ -1,2 +1,3 @@
-0 */6 * * * cd /home/ec2-user/ProgramFiles && java -jar MeTooUpdater.jar
+#This is the Cron command for executing the jar file every 2 hours to archive new fields of Tweet metadata.
+0 */2 * * * cd /home/ec2-user/ProgramFiles && java -jar MeTooUpdater.jar
 
