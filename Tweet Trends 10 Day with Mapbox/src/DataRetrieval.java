@@ -27,7 +27,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import geocodingGoogleAPI.Coordinates;
-import geocodingGoogleAPI.Geocoder;
 //@author John Neppel
 //SE Practicum 2018-2019
 import mapboxapiconnector.ForwardGeocoderMapbox;
@@ -132,7 +131,7 @@ public class DataRetrieval {
 						String bioLocation = this.getUserBioLocationInfo(JSONTweet);
 						Coordinates generatedCoords;
 						// System.out.println(bioLocation); //TESTING
-						if (doesBioLocationHaveUTCoordinates(bioLocation)) { // some users have "ÜT-coordinates as their
+						if (doesBioLocationHaveUTCoordinates(bioLocation)) { // some users have "ÃœT-coordinates as their
 																				// bio-location, which resembles their
 																				// actual location
 							generatedCoords = this.extractCoordsFromUTBioLocation(bioLocation);
@@ -140,7 +139,7 @@ public class DataRetrieval {
 									generatedCoords);
 							archiver.archiveTweetMetadata(object3);
 							System.out.println(
-									"A Tweet was archived. Coordinates were set via ÜT bio-location metadata  ");
+									"A Tweet was archived. Coordinates were set via ÃœT bio-location metadata  ");
 						} else if (archiver.isLocationDataArchived(bioLocation)) { // checks if their bio-location coordinate data has been previously archived
 							generatedCoords = archiver.getCoordsFromArchivedLocationData(bioLocation);
 							TweetDataObject tweet = new TweetDataObject(TweetAtCurrIndex, referenceQuery, JSONTweet,
@@ -505,14 +504,14 @@ public class DataRetrieval {
 	}
 
 	/*
-	 * ÜT stands for the Über Twitter Client. The values after it stand for the
+	 * ÃœT stands for the Ãœber Twitter Client. The values after it stand for the
 	 * person's GPS coordinates for their location (latitude and longitude). SOME
 	 * Twitter users have this, which depicts their approx. location coordinates.
-	 * EXAMPLE: "ÜT: 10.485832,-66.898929". Third party apps such as Ubertwitter
+	 * EXAMPLE: "ÃœT: 10.485832,-66.898929". Third party apps such as Ubertwitter
 	 * offer a service to have this set as their bio-location.
 	 */
 	public boolean doesBioLocationHaveUTCoordinates(String bioLocation) {
-		String regex = "ÜT: [0-9].*";
+		String regex = "ÃœT: [0-9].*";
 
 		if (bioLocation.matches(regex)) {
 			return true;
@@ -537,18 +536,12 @@ public class DataRetrieval {
 				break;
 			}
 		}
-
-		try {
 			latString = bioLocation.substring(4, indexOfCommaChar);
 			longitString = bioLocation.substring(indexOfCommaChar + 1, bioLocation.length() - 1);
 			generatedCoords.setLatitude(Double.parseDouble(latString));
 			generatedCoords.setLongitude(Double.parseDouble(longitString));
-		} catch (Exception e) { // this should never be reached due to the regex protection
-			generatedCoords.setLatitude(30.4383);
-			generatedCoords.setLongitude(-84.2807);
-
-		}
-		return generatedCoords;
+		
+			return generatedCoords;
 
 	}
 
