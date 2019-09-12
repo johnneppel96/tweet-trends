@@ -24,7 +24,7 @@ public class TweetTrendsCore {
 
 	public TweetTrendsCore() {
 		retriever = new DataRetrieval();
-		archiver = new DataArchival();
+		archiver = DataArchival.getInstance();
 	}
 
 	/*
