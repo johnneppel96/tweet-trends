@@ -25,14 +25,20 @@ public class DataArchival {
 	private String username;
 	private String password;
 	private static Connection connection;
+	private static DataArchival instance;
 
-	private static int count = 0;
-	private static final int refreshRate = 48;
 
 	/* Constructor */
-	public DataArchival() {
+	private DataArchival() {
 		configureSettingsToDatabase(); // initializes the connection variable settings via the .ini file
 		setUpConnectionToDatabase();
+	}
+	
+	public static DataArchival getInstance() {
+		if(instance == null) {
+			instance = new DataArchival();
+		}
+		return instance;
 	}
 
 	/*
@@ -306,21 +312,12 @@ public class DataArchival {
 	 */
 	public void archiveTweetMetadata(TweetDataObject tweet) {
 		try {
-			if (count >= refreshRate) {
-				connection.commit();
-				closeDatabaseConnection();
-				setUpConnectionToDatabase();
-				// System.out.println("REFRESH");
-				count = 0;
-			}
-
 			generateTweetTagsQuery(tweet.getQueryTagText());
 			generateTweetDataQuery(tweet.getTweetID(), tweet.getTweetText(), tweet.getQueryTagText(),
 					tweet.getCoordinates(), tweet.getTweetTimestamp(), tweet.getHashtagsCSV());
 			generateAssocTagsDescipQueries(tweet);
 			connection.commit();
 			generateAssocTagsQueries(tweet);
-			count++;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			try {
