@@ -50,7 +50,7 @@ public class DataRetrieval {
 		API = configConnectionToAPI(); // sets up the connection to the Twitter API service
 		MAX_NUM_OF_DATA_POINTS = getMaxNumOfDataPointsPerRequest();
 		MapboxAPI = ForwardGeocoderMapbox.getInstance();
-		archiver = new DataArchival();
+		archiver = DataArchival.getInstance();
 	}
 
 	/*
