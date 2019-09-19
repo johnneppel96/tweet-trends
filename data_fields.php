@@ -3,7 +3,7 @@
 		in the queries executed to the database and the displayed form
 		fields.*/
 
-		//This is for when the form data has been submitted by the user
+		//When the form data has been submitted by the user
         if(isset($_POST['submit'])) {
             $from_month = $_POST['from_month'];
             $from_day = $_POST['from_day'];
@@ -31,6 +31,24 @@
 				$to_day = date('j', strtotime($combined_to_date));
 			}
 			
+			//This checks whether the user requested to view data from a date-range greater than 90
+			//days. Due to the large scale of data which can cause memory and performance issues with the
+			//application, the following will alter the "TO" date to 90 days later than the "FROM" date that
+			//the user selected instead of the original selected dates.
+			if(isDateRangeGreaterThan90Days($combined_from_date, $combined_to_date)==true) {
+				 $combined_to_date = alterDateTo90DaysLater($combined_from_date);
+				 $to_day = date('j', strtotime($combined_to_date));
+				 $to_year = date('Y', strtotime($combined_to_date));
+				?>
+				<script> alert("Due to the large quantity of data, your selected date-range has" +
+							   " been altered to represent a spread of 90 days: " +
+							    "<?php echo date('F j, Y', strtotime($combined_from_date)) . ' - ' .
+									date('F j, Y', strtotime($combined_to_date)) ?>."
+							  );</script>
+							  
+				<?php 
+			}
+			
 			//The corresponding month string (e.g May, July, etc) for
         	// the date that will be displayed as the default
         	// value for the form drop-down menu
@@ -44,21 +62,18 @@
 		//of collected Tweet data will be displayed onto the maps.
         else {
 			  //The 'to' date is today's current date
-			   $combined_to_date = date("Y-n-j");
+			   $combined_to_date = date($format);
 			
-              //returns the number of seconds FROM Jan 1, 1970 TO the following dates.
-			  //The value is stored for further operations regarding those dates
-               $week_agos_date_amt = strtotime("-7 days");
               //converts to the string/date representation: y-m-d
-               $combined_from_date= date("Y-n-j",$week_agos_date_amt);
+               $combined_from_date= date($format, strtotime("-7 days"));
 			
 				//Pulls the appropriate String date parameters from last weeks date.
 			    //These will be displayed as the default (top) value in the date drop-down
 		        //menus to show the user what dates are being represented by the intial
 			    //load of the webpage.
-				$from_month_string = date('F', $week_agos_date_amt);
-				$from_day = date('j', $week_agos_date_amt);
-				$from_year = date('Y', $week_agos_date_amt);
+				$from_month_string = date('F', strtotime("-7 days"));
+				$from_day = date('j', strtotime("-7 days"));
+				$from_year = date('Y', strtotime("-7 days"));
 			
 				$to_month_string = date('F');
 				$to_day = date('j'); //contains no proceeding zeroes (no 03,04,etc)

@@ -1,5 +1,5 @@
  <?php
-  include "db_connection.php";
+    include "db_connection.php";
 	include "date_validator.php";
 	include "data_fields.php";
     ?>
@@ -18,13 +18,13 @@
 <h1 style="color:skyblue;text-align:center;font-size:50px;">
 	#TweetTrends
 </h1>
-  <p style="color:skyblue;text-align:center;">
+  <p style="font-family:Helvetica;color:skyblue;text-align:center;">
     This site is used to track where #MeToo tweets are occurring. It displays both a heatmap and a marker map, which you can edit in the forms below.
     To look at corresponding hashtags related to #MeToo, simply hover the cursor over a marker and it will be displayed.
   </p>
   <div style="display:flex;">    
-	<form action = "index.php" method = "POST" style="margin: 0 auto;text-align:center;">
-    	Select two dates to show Tweets in between the two.&nbsp; &nbsp; <b>From: &nbsp;</b> Month &nbsp;
+	<form action = "index.php" method = "POST" style="margin: 0 auto;text-align:center; font-family:Helvetica; color:white;">
+    	Select two dates to show Tweets in between the two.&nbsp; &nbsp; <b>From: &nbsp;</b> Month 
 	  <select name ="from_month" id="selectMonth">
     	<option value= "<?php echo date('n', strtotime($from_month_string)); ?>" selected hidden><?php echo $from_month_string; ?></option>
 	    <option value="1">January</option>
@@ -88,7 +88,7 @@
 	    &nbsp;
         &nbsp;
         <b>To:</b>
-	  &nbsp; Month
+	  &nbsp; Month  
 	  <select name = "to_month" id="selectSecondMonth">
      	<option value="<?php echo date('n', strtotime($to_month_string)); ?>" selected hidden><?php echo $to_month_string; ?></option>
 	    <option value="1">January</option>
@@ -169,15 +169,12 @@
       <button onclick="changeOpacity()">Change opacity</button>
     </div>
 
-<p style="color:skyblue;text-align:center;">
-  This website was created by the Monmouth University Software Engineering department, graduating class of 2019, made by: 
+<p style="font-family:Helvetica;color:skyblue;text-align:center;">
+  This website was created by Monmouth University's Department of Computer Science and Software Engineering, graduating class of 2019. 
 </p>
 
-<p style="color:skyblue;text-align:center;padding:10px;">
-  John Neppel
-</p>
-<p style="color:skyblue;text-align:center;padding:10px;">
-  Thomas McHugh
+<p style="font-family:Helvetica;color:skyblue;text-align:center;padding:10px;">
+  Developers: John Neppel and Thomas McHugh
 </p>
        
 <script>
