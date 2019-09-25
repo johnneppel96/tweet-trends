@@ -111,7 +111,7 @@ public class DataArchival {
 		ResultSet resultSet = null;
 
 		try {
-			query = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(statement);
+			query = connection.prepareStatement(statement);
 			query.setString(1, queryTagText); // adds the parameter to the query-string
 			resultSet = query.executeQuery();
 
@@ -155,7 +155,7 @@ public class DataArchival {
 		ResultSet resultSet = null;
 
 		try {
-			query = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(statement);
+			query = connection.prepareStatement(statement);
 			query.setString(1, queryTagText); // adds the parameter to the query-string
 			resultSet = query.executeQuery();
 
@@ -208,7 +208,7 @@ public class DataArchival {
 		ResultSet result = null;
 		boolean isArchived = false;
 		try {
-			query = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(queryStatement);
+			query = connection.prepareStatement(queryStatement);
 			query.setString(1, bioLocation);
 			result = query.executeQuery();
 
@@ -251,7 +251,7 @@ public class DataArchival {
 		ResultSet result = null;
 
 		try {
-			query = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(queryStatement);
+			query = connection.prepareStatement(queryStatement);
 			query.setString(1, bioLocation);
 			result = query.executeQuery();
 			if (result.next()) {
@@ -294,7 +294,7 @@ public class DataArchival {
 		PreparedStatement query = null;
 
 		try {
-			query = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(queryStatement);
+			query = connection.prepareStatement(queryStatement);
 			query.setString(1, bioLocation);
 			query.setDouble(2, generatedCoords.getLatitude());
 			query.setDouble(3, generatedCoords.getLongitude());
@@ -374,7 +374,7 @@ public class DataArchival {
 																									// previously
 			String insert1 = "INSERT INTO tweet_tags(QueryTagText) VALUES(?);";
 
-			existsStatement = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(existsQuery);
+			existsStatement = connection.prepareStatement(existsQuery);
 			existsStatement.setString(1, tweet.getQueryTagText());
 			existsSet = existsStatement.executeQuery();
 
@@ -382,7 +382,7 @@ public class DataArchival {
 
 				if (existsSet.getBoolean(1) == false) { // false means that the text of this query hasn't been archived
 														// within this table yet
-					statement1 = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(insert1);
+					statement1 = connection.getConnectionToDatabase().prepareStatement(insert1);
 					statement1.setString(1, tweet.getQueryTagText());
 					statement1.executeUpdate();
 				}
@@ -421,7 +421,7 @@ public class DataArchival {
 		PreparedStatement statement2 = null;
 
 		try {
-			statement2 = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(insert2);
+			statement2 = connection.prepareStatement(insert2);
 			statement2.setLong(1, tweet.getTweetID());
 			statement2.setString(2, tweet.getTweetText());
 			statement2.setString(3, tweet.getQueryTagText());
@@ -469,7 +469,7 @@ public class DataArchival {
 								// associated hashtag that corresponds to the hashtag within the query
 				}
 
-				existsStatement = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(existsQuery);
+				existsStatement = connection.prepareStatement(existsQuery);
 				existsStatement.setString(1, currHashtagText); // will check to see whether the text of this hashtag has
 																// been previously been archived into this table (it's
 																// an unique index)
@@ -487,7 +487,7 @@ public class DataArchival {
 
 					} else { // this is if the resultset has false within it, which indicates that the
 								// hashtag string NEEDS to be archived
-						statement = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(insert3);
+						statement = connection.getConnectionToDatabase().prepareStatement(insert3);
 						statement.setString(1, currHashtagText); // sets the parameter as the Hashtag text at the
 																	// current index of the array
 						statement.executeUpdate(); // executes the query statement to insert it
@@ -529,7 +529,7 @@ public class DataArchival {
 					continue; // returns the execution to the 'for' loop; hashtags that are identical to the
 								// query tag are NOT archived
 				}
-				statement = DataArchival.getInstance().getConnectionToDatabase().prepareStatement(queryString);
+				statement = connection.prepareStatement(queryString);
 				statement.setString(1, currHashtagText);
 				statement.setLong(2, tweet.getTweetID()); // sets the parameter to the TweetID number
 				statement.executeUpdate(); // executes the query statement
