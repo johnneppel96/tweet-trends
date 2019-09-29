@@ -275,7 +275,7 @@ public class TweetDataObject {
 		// full non-truncated Tweet, we need to extract the embedded 'retweetedStatus'
 		// JSONObject.
 
-		if (TweetAsJSON.getString("text").substring(0, 3).equals("RT ") && TweetAsJSON.has("retweeted_status")) { 
+		if (TweetAsJSON.getString("text").substring(0, 3).equals("RT ") && TweetAsJSON.has("retweeted_status")) {
 			JSONObject retweetedStatus = TweetAsJSON.getJSONObject("retweeted_status"); // the Tweet that was retweeted
 																						// by the user
 			String originalStatus = TweetAsJSON.getString("text");
@@ -288,12 +288,31 @@ public class TweetDataObject {
 				}
 			}
 
-			tweetText = tweetText + " " + retweetedStatus.getString("text"); // Appends the full text of the retweet
+			// Sometimes the API embeds the full information of the Tweet inside the
+			// "extended_tweet" object
+			if (retweetedStatus.has("extended_tweet")) {
+				//Appends the full text of the retweeted status
+				tweetText = tweetText + " " + retweetedStatus.getJSONObject("extended_tweet").getString("full_text");
+			}
+
+			else {
+				tweetText = TweetText + " " + retweetedStatus.getString("text");
+			}
+
 		}
 
-		else { // if the Tweet is not a Retweet
-			tweetText = TweetAsJSON.getString("text"); // simply get the text of the Tweet
+		else { // if the Tweet is NOT a Retweet
+				// Full Tweet information of a non-retweet is sometimes put into the following
+				// JSON-object.
+			if (TweetAsJSON.has("extended_tweet")) {
+				tweetText = TweetAsJSON.getJSONObject("extended_tweet").getString("full_text");
+			}
+
+			else {
+				tweetText = TweetAsJSON.getString("text"); // simply get the text of the Tweet
+			}
 		}
+
 		return tweetText;
 	}
 
