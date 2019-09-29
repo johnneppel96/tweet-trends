@@ -59,11 +59,21 @@ public class DataArchival {
 		}
 	}
 
+	
 	// Returns the configured database connection object
 	public Connection getConnectionToDatabase() {
-		return connection;
+			//Checks if database connection is inactive. In that case,
+		   // a new one will be created. This helps solve the occasional issue of
+		   //MySQL unexpectedly closing the connection.
+			if(isDatabaseConnectionActive()==false) {
+				setUpConnectionToDatabase();
+			}
+			
+			return connection;
+		
 	}
-
+	
+	
 	/*
 	 * Uses the url, username and password instance variables to set up connection
 	 * to the database
@@ -97,7 +107,7 @@ public class DataArchival {
 		ResultSet resultSet = null;
 
 		try {
-			query = connection.prepareStatement(statement);
+			query = getConnectionToDatabase().prepareStatement(statement);
 			query.setString(1, queryTagText); // adds the parameter to the query-string
 			resultSet = query.executeQuery();
 
@@ -141,7 +151,7 @@ public class DataArchival {
 		ResultSet resultSet = null;
 
 		try {
-			query = connection.prepareStatement(statement);
+			query = getConnectionToDatabase().prepareStatement(statement);
 			query.setString(1, queryTagText); // adds the parameter to the query-string
 			resultSet = query.executeQuery();
 
@@ -175,7 +185,7 @@ public class DataArchival {
 	 */
 	public boolean isDatabaseConnectionActive() {
 		try {
-			if (connection.equals(null) || connection.isClosed()) {
+			if (connection.equals(null) || connection.isClosed() || connection.isValid(12)==false) {
 				return false;
 			} else {
 				return true;
@@ -192,7 +202,7 @@ public class DataArchival {
 		ResultSet result = null;
 		boolean isArchived = false;
 		try {
-			query = connection.prepareStatement(queryStatement);
+			query = getConnectionToDatabase().prepareStatement(queryStatement);
 			query.setString(1, bioLocation);
 			result = query.executeQuery();
 
@@ -241,7 +251,7 @@ public class DataArchival {
 		ResultSet result = null;
 
 		try {
-			query = connection.prepareStatement(queryStatement);
+			query = getConnectionToDatabase().prepareStatement(queryStatement);
 			query.setString(1, bioLocation);
 			result = query.executeQuery();
 			if (result.next()) {
@@ -283,7 +293,7 @@ public class DataArchival {
 		PreparedStatement query = null;
 
 		try {
-			query = connection.prepareStatement(queryStatement);
+			query = getConnectionToDatabase().prepareStatement(queryStatement);
 			query.setString(1, bioLocation);
 			query.setDouble(2, generatedCoords.getLatitude());
 			query.setDouble(3, generatedCoords.getLongitude());
@@ -316,7 +326,7 @@ public class DataArchival {
 			generateTweetDataQuery(tweet.getTweetID(), tweet.getTweetText(), tweet.getQueryTagText(),
 					tweet.getCoordinates(), tweet.getTweetTimestamp(), tweet.getHashtagsCSV());
 			generateAssocTagsDescipQueries(tweet);
-			connection.commit();
+			getConnectionToDatabase().commit();
 			generateAssocTagsQueries(tweet);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -346,7 +356,7 @@ public class DataArchival {
 																									// previously
 			String insert1 = "INSERT INTO tweet_tags(QueryTagText) VALUES(?);";
 
-			existsStatement = connection.prepareStatement(existsQuery);
+			existsStatement = getConnectionToDatabase().prepareStatement(existsQuery);
 			existsStatement.setString(1, queryTagText);
 			existsSet = existsStatement.executeQuery();
 
@@ -354,7 +364,7 @@ public class DataArchival {
 
 				if (existsSet.getBoolean(1) == false) { // false means that the text of this query hasn't been archived
 														// within this table yet
-					statement1 = connection.prepareStatement(insert1);
+					statement1 = getConnectionToDatabase().prepareStatement(insert1);
 					statement1.setString(1, queryTagText);
 					statement1.executeUpdate();
 				}
@@ -395,7 +405,7 @@ public class DataArchival {
 		PreparedStatement statement2 = null;
 
 		try {
-			statement2 = connection.prepareStatement(insert2);
+			statement2 = getConnectionToDatabase().prepareStatement(insert2);
 			statement2.setLong(1, TweetID);
 			statement2.setString(2, TweetText);
 			statement2.setString(3, queryTagText);
@@ -447,7 +457,7 @@ public class DataArchival {
 				// will check to see whether the text of this hashtag has
 				// been previously been archived into this table (it's
 				// an unique index)
-				existsStatement = connection.prepareStatement(existsQuery);
+				existsStatement = getConnectionToDatabase().prepareStatement(existsQuery);
 				existsStatement.setString(1, currHashtagText);
 				ResultSet existsSet = existsStatement.executeQuery();
 
@@ -461,7 +471,7 @@ public class DataArchival {
 						}
 					} else { // This is if the resultset has false in it, meaning that the hashtag text needs
 								// to be archived
-						statement = connection.prepareStatement(insert3);
+						statement = getConnectionToDatabase().prepareStatement(insert3);
 						statement.setString(1, currHashtagText); // sets the parameter as the Hashtag text at the
 																	// current index of the array
 						statement.executeUpdate();
@@ -501,7 +511,7 @@ public class DataArchival {
 					continue; // returns the execution to the 'for' loop; hashtags that are identical to the
 								// query tag are NOT archived
 				}
-				statement = connection.prepareStatement(queryString);
+				statement = getConnectionToDatabase().prepareStatement(queryString);
 				statement.setString(1, currHashtagText);
 				statement.setLong(2, tweet.getTweetID()); // sets the parameter to the TweetID number
 				statement.executeUpdate();
